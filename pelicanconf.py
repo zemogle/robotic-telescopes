@@ -1,7 +1,7 @@
 AUTHOR = 'Edward Gomez'
 SITENAME = 'Robotic Telescopes for Education'
-SITEURL = 'https://www.zemogle.net/robotic-telescopes/'
-# SITEURL = ''
+#SITEURL = 'https://www.zemogle.net/robotic-telescopes/'
+SITEURL = ''
 
 PATH = 'content'
 

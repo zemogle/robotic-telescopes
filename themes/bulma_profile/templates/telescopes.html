@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="section">
+    <div class="container">
+        <h1 class="title">List of Robotic Telescope facilities used for education</h1>
+        <table class="table is-striped is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Facility</th>
+                    <th>Instrumentaion</th>
+                    <th>Waveband</th>
+                    <th>Hours</th>
+                </tr>
+            </thead>
+            <tbody id="data-table-body">
+                <!-- Data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('{{ SITEURL }}/{{ THEME_STATIC_DIR }}/telescopes.json')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('data-table-body');
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                    let website;
+                    if (item.website.startsWith('http')) {
+                        website = item.website;
+                    } else {
+                        website = 'http://' + item.website;
+                    }
+                    row.innerHTML = `
+                        <td><a href="${website}">${item.facility}</a></td>
+                        <td>${item.instrumentation}</td>
+                        <td>${item.waveband}</td>
+                        <td>${item.hours}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    });
+</script>
+{% endblock content %}

@@ -14,7 +14,7 @@ THEME = 'themes/bulma_profile/'
 # Blogroll
 LINKS = (
         ('Home','/'),
-        ('Telescopes & Networks', '/list/'),
+        ('Telescopes & Networks', '/telescopes/'),
          ('Survey', '/survey/'),
 )
 
@@ -26,6 +26,8 @@ PAGE_SAVE_AS = '{slug}/index.html'
 READERS = {"html": None}
 
 STATIC_PATHS = ['images',]
+
+DIRECT_TEMPLATES = ['index', 'telescopes']
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
